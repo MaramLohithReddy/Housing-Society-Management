@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
-const Security = require('../models/security');
+const Security = require('../models/Security');
 const GuestQR = require('../models/GuestQR');
 
 // 🔐 Security login
