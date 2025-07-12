@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Community Gallery</title>
+  <link rel="stylesheet" href="/css/upload_gallery.css" />
+</head>
+<body>
+  <h2>🏘️ Your Community Gallery</h2>
+
+  <div id="galleryContainer">
+    <div id="gallery" aria-label="Community images gallery"></div>
+  </div>
+
+  <!-- Popup modal to show clicked image -->
+  <div id="imagePopup" class="popup-modal hidden" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
+    <div class="popup-content">
+      <button id="popupClose" aria-label="Close image popup" class="popup-close">&times;</button>
+      <h3 id="popupTitle" class="popup-title">Image Preview</h3>
+      <img id="popupImage" src="" alt="Selected community image" />
+    </div>
+  </div>
+
+  <script src="/js/view_gallery.js" defer></script>
+</body>
+</html>

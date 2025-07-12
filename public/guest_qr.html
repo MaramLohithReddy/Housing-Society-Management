@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Generate Guest QR</title>
+  <link rel="stylesheet" href="/css/guest_qr.css">
+  <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Generate Guest QR Code</h2>
+   <form id="qrForm">
+  <input id="guestName" placeholder="Guest Name" required />
+  <input id="visitDate" type="date" required />
+  <input id="visitTime" type="time" required />
+  <button type="submit">Generate QR</button>
+</form>
+
+<canvas id="qrCanvas" width="300" height="400" style="margin-top: 20px;"></canvas>
+<button id="whatsappBtn" style="display:none;">📤 Share via WhatsApp</button>
+
+<script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+<script src="js/guest_qr.js"></script>
+
+
+</body>
+</html>

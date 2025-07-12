@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>🔑 Guest QR Logs</title>
+  <link rel="stylesheet" href="css/manager.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f7fb;
+      padding: 40px;
+      margin: 0;
+    }
+
+    h2 {
+      text-align: center;
+      color: #0077b6;
+      margin-bottom: 30px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: #fff;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 12px 16px;
+      text-align: center;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #0077b6;
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin-top: 20px;
+      background-color: #0077b6;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    .back-btn:hover {
+      background-color: #005f8a;
+    }
+  </style>
+</head>
+<body>
+  <h2>🔑 Guest QR Access Logs</h2>
+
+  <table id="logTable">
+    <thead>
+      <tr>
+        <th>Sl No</th>
+        <th>Guest Name</th>
+        <th>House</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <a href="manager_dashboard.html" class="back-btn">⬅ Back to Dashboard</a>
+
+  <script src="js/guest_logs.js"></script>
+</body>
+</html>

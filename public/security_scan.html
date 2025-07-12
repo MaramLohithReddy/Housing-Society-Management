@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Security QR Scanner</title>
+  <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #141e30, #243b55);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    #reader {
+      width: 320px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+      background-color: #000;
+      padding: 12px;
+    }
+
+    #result {
+      margin-top: 25px;
+      font-size: 18px;
+      font-weight: bold;
+      padding: 15px 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+      display: none;
+      max-width: 90%;
+    }
+
+    .success {
+      background-color: #00c853;
+    }
+
+    .error {
+      background-color: #d32f2f;
+    }
+
+    .info {
+      background-color: #ffab00;
+      color: black;
+    }
+
+    #rescanBtn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #2196f3;
+      border: none;
+      border-radius: 6px;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      display: none;
+    }
+
+    #rescanBtn:hover {
+      background-color: #0d8af0;
+    }
+
+    .back-btn {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background-color: #2196f3;
+      padding: 10px 16px;
+      border-radius: 5px;
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .back-btn:hover {
+      background-color: #1976d2;
+    }
+  </style>
+</head>
+<body>
+
+  <a class="back-btn" href="/security_login.html">← Back</a>
+  <h2>Scan Guest QR Code</h2>
+
+  <div id="reader"></div>
+  <div id="result"></div>
+  <button id="rescanBtn">Scan Another QR</button>
+
+  <script>
+    let scanner;
+    const resultDiv = document.getElementById('result');
+    const rescanBtn = document.getElementById('rescanBtn');
+    const community = localStorage.getItem('community');
+
+    if (!community) {
+      resultDiv.innerText = "❌ No community found. Please log in again.";
+      resultDiv.className = 'error';
+      resultDiv.style.display = 'block';
+    }
+
+    function showMessage(message, type = 'success') {
+      resultDiv.className = type;
+      resultDiv.innerText = message;
+      resultDiv.style.display = 'block';
+      rescanBtn.style.display = 'inline-block';
+    }
+
+    async function onScanSuccess(decodedText) {
+      try {
+        const response = await fetch(`/api/security/scan/${decodedText}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ community }) // ✅ Send correct community
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          showMessage(data.message, 'success');
+        } else {
+          showMessage(data.message, 'error');
+        }
+
+        scanner.clear(); // stop scanner
+      } catch (err) {
+        console.error(err);
+        showMessage("❌ Error scanning QR", 'error');
+      }
+    }
+
+    function startScanner() {
+      resultDiv.style.display = 'none';
+      rescanBtn.style.display = 'none';
+      scanner = new Html5QrcodeScanner("reader", { fps: 10, qrbox: 250 });
+      scanner.render(onScanSuccess);
+    }
+
+    rescanBtn.addEventListener('click', () => {
+      document.getElementById('reader').innerHTML = ''; // Reset scanner DOM
+      startScanner();
+    });
+
+    // Initial start
+    if (community) {
+      startScanner();
+    }
+  </script>
+</body>
+</html>

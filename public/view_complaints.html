@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>View Complaints - Manager Dashboard</title>
+  <link rel="stylesheet" href="/css/view_complaints.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #f9f9f9;
+    }
+    h2 {
+      margin-bottom: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: #fff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    th, td {
+      padding: 12px;
+      border: 1px solid #ccc;
+      text-align: center;
+    }
+    th {
+      background-color: #007bff;
+      color: white;
+    }
+    button {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    button:hover {
+      background-color: #218838;
+    }
+    img {
+      max-width: 100px;
+      max-height: 100px;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Community Complaints</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Sl. No</th>
+        <th>House Number</th>
+        <th>Issue</th>
+        <th>Description</th>
+        <th>Image</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody id="managerTable">
+      <!-- Complaints will be populated here -->
+    </tbody>
+  </table>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      const community = localStorage.getItem('community');
+      const res = await fetch(`/api/complaints/community/${community}`);
+      const data = await res.json();
+      const table = document.getElementById('managerTable');
+
+      table.innerHTML = '';
+
+      if (data.success && data.data.length > 0) {
+        data.data.forEach((c, index) => {
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td>${index + 1}</td>
+            <td>${c.houseNumber}</td>
+            <td>${c.issue}</td>
+            <td>${c.description || '-'}</td>
+            <td>
+              ${c.imageUrl ? `<img src="${c.imageUrl}" alt="Complaint Image" />` : 'No Image'}
+            </td>
+            <td>${c.status}</td>
+            <td>
+              ${c.status === 'Pending' ? `<button onclick="markResolved('${c._id}')">Mark Resolved</button>` : '✅ Resolved'}
+            </td>
+          `;
+          table.appendChild(tr);
+        });
+      } else {
+        table.innerHTML = `<tr><td colspan="7">No complaints found.</td></tr>`;
+      }
+    });
+
+    async function markResolved(id) {
+      if (confirm("Are you sure you want to mark this complaint as resolved?")) {
+        await fetch(`/api/complaints/resolve/${id}`, { method: 'PATCH' });
+        location.reload();
+      }
+    }
+  </script>
+</body>
+</html>

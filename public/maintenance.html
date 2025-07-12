@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Maintenance Payment - Smart Homez</title>
+  <link rel="stylesheet" href="/css/maintenance.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <h1>💸 Pay Maintenance Dues</h1>
+
+    <!-- No Dues -->
+    <div id="noMaintenance" style="display: none; color: green; font-weight: bold;">
+      🎉 No pending maintenance. Thank you for paying!
+    </div>
+
+    <!-- Dues Section -->
+    <h2>📋 Pending Dues</h2>
+    <table id="duesTable">
+      <thead>
+        <tr>
+          <th>Sl No</th>
+          <th>Month</th>
+          <th>Amount</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="duesContainer"></tbody>
+    </table>
+
+    <!-- QR + Transaction Input -->
+    <div id="paymentUI" style="display: none; margin-top: 20px; text-align: center;">
+      <h3>📷 Scan the QR Code to Pay</h3>
+      <img src="/images/upi.jpeg" alt="QR Code" style="max-width: 200px; border-radius: 8px;" />
+      <div style="margin-top: 15px;">
+        <input type="text" id="transactionidInput" placeholder="Enter Transaction ID" />
+        <button id="submitPaymentBtn">✅ Submit Payment</button>
+      </div>
+    </div>
+
+    <div id="paymentStatus" style="margin-top: 15px;"></div>
+
+    <!-- Payment History -->
+    <h2 style="margin-top: 40px;">📜 Payment History</h2>
+    <table id="historyTable">
+      <thead>
+        <tr>
+          <th>💰 Amount</th>
+          <th>🧾 Transaction ID</th>
+          <th> Purpose</th>
+          <th>📅 Date&Time</th>
+          <th>📄 Receipt</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <br />
+    <a href="/user_dashboard.html">⬅️ Back to Dashboard</a>
+  </div>
+
+  <script src="/js/maintenance.js"></script>
+</body>
+</html>

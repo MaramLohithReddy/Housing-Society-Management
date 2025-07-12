@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>User Dashboard - Smart Homez</title>
+  <link rel="stylesheet" href="/css/user_dashboard.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header>
+    <h1>Welcome to Smart Homez </h1>
+    <p class="community-name">Community: <span id="communityName">GreenHeights</span></p>
+  </header>
+
+  <nav class="sidebar">
+    <ul>
+      <li><a href="user_dashboard.html"> Home</a></li>
+      <li><a href="maintenance.html"> Maintenance</a></li>
+      <li><a href="user_complaint.html"> Complaints</a></li>
+      <li><a href="owner_details.html">Owner Details</a></li>
+      <li><a href="#expenses"> Expenses</a></li>
+      <li><a href="#rent-sale"> Rent/Sale</a></li>
+      <li><a href="user_events.html"> Events</a></li>
+      <li><a href="guest_qr.html"> Guest QR</a></li>
+      <li><a href="view_gallery.html"> Gallery</a></li>
+    </ul>
+  </nav>
+
+  <main class="content">
+    <section id="home">
+      <h2>Community Highlights</h2>
+
+      <div class="highlight-box">
+        <img src="/images/pool.jpg" alt="Swimming Pool" />
+        <img src="/images/gym.jpg" alt="Community Gym" />
+        <img src="/images/garden.jpg" alt="Garden" />
+        <img src="/images/track.jpg" alt="Track" />
+      </div>
+
+      <div class="feature-list">
+        <h3>🏡 Key Amenities:</h3>
+        <ul>
+          <li> *24x7 Water Supply</li>
+          <li> *Round-the-clock Security</li>
+          <li> *Guest Rooms for Visitors</li>
+          <li> *Power Backup for All Units</li>
+          <li> *Jogging Track</li>
+          <li> *CCTV Surveillance</li>
+          <li> *Intercom Facility</li>
+        </ul>
+      </div>
+
+      <div class="upcoming-events">
+        <h3>Upcoming Events 🎊</h3>
+        <ul>
+          <li>🎵 Music Night - July 15</li>
+          <li>🏃 Sports Day - July 21</li>
+          <li>🍽️ Potluck Dinner - July 29</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+<script>
+  // Simple auth check
+  const token = localStorage.getItem('token');
+  const role = localStorage.getItem('role');
+
+  if (!token || !role) {
+    window.location.href = '/index.html'; // redirect to login
+  }
+</script>
+
+  <script src="/js/user_dashboard.js"></script>
+</body>
+</html>

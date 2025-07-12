@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Security QR Scanner</title>
+  <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+</head>
+<body>
+  <h2>Scan Guest QR</h2>
+  <div id="reader" style="width:300px;"></div>
+  <div id="result" style="margin-top: 15px; font-weight: bold;"></div>
+
+  <script>
+    function onScanSuccess(decodedText, decodedResult) {
+      // Extract only QR ID from full URL
+      let qrId = decodedText.split('/').pop();
+
+      fetch(`/api/security/scan/${qrId}`, {
+        method: 'POST'
+      })
+      .then(async res => {
+        const data = await res.json();
+        document.getElementById('result').innerText = data.message || 'Success';
+      })
+      .catch(err => {
+        document.getElementById('result').innerText = '❌ Error scanning QR';
+        console.error("Scan error:", err);
+      });
+
+      html5QrcodeScanner.clear();
+    }
+
+    const html5QrcodeScanner = new Html5QrcodeScanner("reader", { fps: 10, qrbox: 250 });
+    html5QrcodeScanner.render(onScanSuccess);
+  </script>
+</body>
+</html>

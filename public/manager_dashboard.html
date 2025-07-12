@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Manager Dashboard - Smart Homez</title>
+  <link rel="stylesheet" href="/css/manager_dashboard.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header>
+    <h1>📊 Smart Homez - Manager Dashboard</h1>
+    <p class="community-name">Community: <span id="managerCommunity">Loading...</span></p>
+  </header>
+
+  <nav class="sidebar">
+    <ul>
+      <li><a href="manager_dashboard.html">🏠 Dashboard Home</a></li>
+      <li><a href="post_maintenance.html">📢 Post Maintenance</a></li>
+      <li><a href="#payments">💰 View Payments</a></li>
+      <li><a href="view_complaints.html">📨 Complaints</a></li>
+      <li><a href="view_users.html">📇 Owner Directory</a></li>
+      <li><a href="manager_events.html">🎉 Add Events</a></li>
+      <li><a href="upload_gallery.html">🖼️ Upload Gallery</a></li>
+      <li><a href="create_user.html">🖼️ Create User</a></li>
+      <li><a href="guest_logs.html">🔑 Guest QR Access Logs</a></li>
+      <li><a href="security_login.html">📄 Security Login</a></li>
+    </ul>
+  </nav>
+
+  <main class="content">
+    <section id="home">
+      <h2>📌 Manager Tools</h2>
+      <p>Use the sidebar to manage community operations.</p>
+      <div class="cards">
+        <div class="card"><li><a href="post_maintenance.html">📢 Post Maintenance Notice</a></li>
+</div>
+        <div class="card">💸 Track All Payments</div>
+        <div class="card">📇 Manage Owners</div>
+        <div class="card">📨 View Complaints</div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const token = localStorage.getItem('token');
+    const role = localStorage.getItem('role');
+
+    if (!token || role !== 'manager') {
+      window.location.href = '/login.html';
+    }
+
+    // Set community name
+    document.getElementById('managerCommunity').innerText =
+      localStorage.getItem('community') || 'Unknown';
+  </script>
+</body>
+</html>

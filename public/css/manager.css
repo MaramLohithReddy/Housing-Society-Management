@@ -1,0 +1,117 @@
+/* Base Styles */
+body {
+  font-family: 'Rubik', sans-serif;
+  background: #f5f7fa;
+  margin: 0;
+  padding: 40px;
+  text-align: center;
+}
+
+/* Container Box */
+.container {
+  max-width: 600px;
+  margin: auto;
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+}
+label[for="purpose"] {
+  margin-top: 15px;
+  display: block;
+  text-align: left;
+  font-weight: bold;
+}
+
+#purpose {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+  margin-bottom: 15px;
+}
+
+/* Headings */
+h1, h2 {
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+/* Form */
+label {
+  display: block;
+  text-align: left;
+  margin: 15px 0 5px;
+  font-weight: 500;
+}
+
+input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+/* Submit Button */
+button {
+  margin-top: 20px;
+  padding: 12px 25px;
+  background-color: #003366;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #005599;
+}
+
+/* Table Styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 30px;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+th, td {
+  padding: 12px;
+  border-bottom: 1px solid #ccc;
+  text-align: center;
+}
+
+th {
+  background-color: #3498db;
+  color: white;
+}
+
+tr:hover {
+  background-color: #f0f8ff;
+}
+
+/* Back Link */
+.back-link {
+  display: inline-block;
+  margin-top: 25px;
+  color: #003366;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.back-link:hover {
+  color: #005599;
+}
+
+/* Status Text */
+#postStatus {
+  font-weight: bold;
+  margin-top: 15px;
+}

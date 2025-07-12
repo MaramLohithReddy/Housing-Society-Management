@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Complaint Form</title>
+  <link rel="stylesheet" href="/css/user_complaint.css" />
+  <script src="/js/user_complaint.js" defer></script>
+</head>
+<!-- Success Modal -->
+<div id="successModal" class="modal">
+  <div class="modal-content">
+    <span class="checkmark">✔</span>
+    <p>Complaint submitted successfully!</p>
+    <button id="okButton">OK</button>
+  </div>
+</div>
+
+<body>
+  <h2>Register Complaint</h2>
+  <form id="complaintForm" enctype="multipart/form-data">
+    <label>Issue Type:</label>
+    <select id="issue">
+      <option value="Plumbing">Plumbing</option>
+      <option value="Carpentry">Carpentry</option>
+      <option value="Housekeeping">Housekeeping</option>
+      <option value="Civil">Civil</option>
+    </select>
+
+    <label>Description:</label>
+    <textarea id="description" rows="4"></textarea>
+
+    <label>Attach Image (optional):</label>
+    <input type="file" id="photo" accept="image/*" />
+
+    <button type="submit">Submit Complaint</button>
+    <p id="status"></p>
+  </form>
+
+  <hr>
+  <h3>Your Complaint History</h3>
+  <table>
+    <thead>
+      <tr><th>Issue</th><th>Status</th><th>Date</th></tr>
+    </thead>
+    <tbody id="complaintHistory"></tbody>
+  </table>
+</body>
+</html>

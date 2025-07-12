@@ -1,0 +1,37 @@
+<h2>Community Complaints</h2>
+<table>
+  <thead>
+    <tr><th>House</th><th>Issue</th><th>Image</th><th>Status</th><th>Action</th></tr>
+  </thead>
+  <tbody id="managerTable"></tbody>
+</table>
+
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+  const community = localStorage.getItem('community');
+  const res = await fetch(`/api/complaints/community/${community}`);
+  const data = await res.json();
+  const table = document.getElementById('managerTable');
+
+  data.data.forEach(c => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${c.houseNumber}</td>
+      <td>${c.issue}</td>
+      <td>${c.imageUrl ? `<img src="${c.imageUrl}" width="100">` : 'No Image'}</td>
+      <td>${c.status}</td>
+      <td>
+        ${c.status === 'Pending' ? `<button onclick="markResolved('${c._id}')">Mark Resolved</button>` : '✅'}
+      </td>
+    `;
+    table.appendChild(tr);
+  });
+});
+
+async function markResolved(id) {
+  if (confirm("Mark this complaint as resolved?")) {
+    await fetch(`/api/complaints/resolve/${id}`, { method: 'PATCH' });
+    location.reload();
+  }
+}
+</script>

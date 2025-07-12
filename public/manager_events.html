@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Manage Community Events</title>
+  <link rel="stylesheet" href="/css/manager_events.css">
+</head>
+<body>
+  <h1>📅 Manage Events</h1>
+  <button id="toggleCreateBtn">➕ Create New Event</button>
+
+  <div id="createEventModal" class="modal" style="display:none;">
+  <div class="modal-content" style="padding: 20px; background: white; border-radius: 10px; max-width: 400px; margin: auto; margin-top: 10%;">
+    <span id="closeEventModal" style="float:right; cursor:pointer; font-weight:bold;">&times;</span>
+    <h3>Create Event</h3>
+    <form id="eventForm">
+      <input type="text" id="eventName" placeholder="Event Name" required><br>
+      <textarea id="description" placeholder="Description" required></textarea><br>
+      <input type="number" id="ticketLimit" placeholder="Total Tickets (0 = Unlimited)"><br>
+      <input type="number" id="ticketPerUser" placeholder="Max Tickets per User" required><br>
+      <input type="file" id="eventImage" accept="image/*"><br>
+      <button type="submit">✅ Add Event</button>
+    </form>
+  </div>
+</div>
+
+
+  <h3>Ongoing Events</h3>
+  <table id="eventTable"><button onclick="downloadCSV('eventTable', 'active_events.csv')">⬇️ Download Active Events</button>
+
+    <thead>
+      <tr>
+        <th>Event</th>
+        <th>Description</th>
+        <th>Tickets Left</th>
+        <th>Max/User</th>
+        <th>Registrations</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+  
+<h3>🗑️ Deleted Events</h3>
+<table id="deletedEventTable"><button onclick="downloadCSV('deletedEventTable', 'deleted_events.csv')">⬇️ Download Deleted Events</button>
+  <thead>
+    <tr><th>Name</th>
+<th>Description</th>
+<th>Registrations</th>
+</tr>
+  </thead>
+  <tbody></tbody>
+</table>
+
+  <div id="registrationsModal" style="display:none;">
+    <h3>Registered Users</h3>
+    <table>
+      <thead><tr><th>House</th><th>Name</th><th>Phone</th><th>Tickets</th></tr></thead>
+      <tbody id="registrationsBody"></tbody>
+    </table>
+    <button onclick="closeModal()">Close</button>
+  </div>
+<div id="popupModal" class="modal" style="display:none;">
+  <div class="modal-content" style="padding: 20px; background: white; border-radius: 10px; max-width: 400px; margin: auto; margin-top: 10%;">
+    <span id="closePopup" style="float:right; cursor:pointer; font-weight: bold;">&times;</span>
+    <p id="popupMessage" style="font-size: 16px;"></p>
+  </div>
+</div>
+  <script src="/js/manager_events.js"></script>
+</body>
+</html>

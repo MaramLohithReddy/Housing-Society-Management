@@ -1,0 +1,65 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  background: #f9f9f9;
+}
+h1, h3 {
+  color: #333;
+}
+button, input, textarea {
+  padding: 8px;
+  margin: 5px 0;
+}
+#toggleCreateBtn {
+  background: #0077cc;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+#toggleCreateBtn:hover {
+  background: #005fa3;
+}
+#eventTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+#eventTable th, #eventTable td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
+}
+#registrationsModal {
+  background: #fff;
+  padding: 20px;
+  border: 2px solid #333;
+  position: fixed;
+  top: 20%;
+  left: 20%;
+  width: 60%;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+.modal {
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.5);
+}
+#registrationsModal button {
+  margin-top: 10px;
+  background: #0077cc;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+#registrationsModal button:hover {
+  background: #005fa3;
+}

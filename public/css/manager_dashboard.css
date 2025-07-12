@@ -1,0 +1,75 @@
+body {
+  margin: 0;
+  font-family: 'Rubik', sans-serif;
+  background: #f0f2f5;
+}
+
+header {
+  background: #003366;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.community-name {
+  font-size: 16px;
+  margin-top: 5px;
+}
+
+.sidebar {
+  position: fixed;
+  top: 160px;
+  left: 0;
+  width: 220px;
+  background: #114477;
+  height: 100%;
+  padding-top: 10px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  margin: 10px 0;
+}
+
+.sidebar a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  display: block;
+  font-weight: 500;
+}
+
+.sidebar a:hover {
+  background: #0b3c5d;
+  border-left: 4px solid #ffcc00;
+}
+
+.content {
+  margin-left: 240px;
+  padding: 30px;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.sidebar a.active {
+  background-color: #0b3c5d;
+  border-left: 4px solid #00ccff;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 200px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  text-align: center;
+  font-weight: 600;
+  color: #114477;
+}

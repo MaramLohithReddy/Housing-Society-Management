@@ -1,0 +1,103 @@
+body {
+  font-family: 'Rubik', sans-serif;
+  background-color: #f4f8fc;
+  margin: 0;
+  padding: 20px;
+  color: #333;
+}
+
+.container {
+  max-width: 500px;
+  margin: auto;
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+h1, h3 {
+  text-align: center;
+  color: #003366;
+}
+.due-box {
+  border: 1px solid #ccc;
+  padding: 15px;
+  margin-top: 15px;
+  border-radius: 8px;
+  background: #f9f9f9;
+}
+.pay-ui {
+  background: #eef;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+label {
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+button {
+  margin-top: 20px;
+  width: 100%;
+  background-color: #0077cc;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #005fa3;
+}
+
+.back-link {
+  display: block;
+  text-align: center;
+  margin-top: 30px;
+  color: #0077cc;
+  text-decoration: none;
+}
+#qrSection {
+  display: none;
+  margin-top: 30px;
+  text-align: center; /* ✅ Center content */
+}
+
+#qrSection img {
+  display: inline-block;
+  max-width: 300px;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+#history {
+  max-width: 90%;
+  margin: 40px auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+#history table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#history th, #history td {
+  padding: 12px;
+  border: 1px solid #ccc;
+  text-align: center;
+}

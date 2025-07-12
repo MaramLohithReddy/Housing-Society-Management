@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Post Maintenance - Manager | Smart Homez</title>
+  <link rel="stylesheet" href="/css/manager.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="container">
+    <h1>📢 Post Maintenance Notice</h1>
+
+    <form id="postMaintenanceForm">
+  <label for="purpose">📝 Purpose:</label>
+  <input type="text" id="purpose" required />
+
+  <label for="amount">💰 Amount (₹):</label>
+  <input type="number" id="amount" required />
+
+  <button type="submit">Post Maintenance</button>
+</form>
+
+
+    <p id="postStatus" style="margin-top: 10px; font-weight: bold;"></p>
+
+    <h2 style="margin-top: 30px;">📋 All Posted Maintenance Notices</h2>
+    <table id="noticesTable">
+      <thead>
+        <tr>
+          <th>📆 Month</th>
+          <th>💰 Amount</th>
+          <th>🗑️ Action</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <br>
+    <a href="/manager_dashboard.html" class="back-link">⬅️ Back to Dashboard</a>
+  </div>
+
+  <script src="/js/post_maintenance.js"></script>
+</body>
+</html>
