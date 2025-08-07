@@ -19,6 +19,7 @@ Use any of the login credential in that you can navigate to create user page and
 Make sure you login with same community in which your account is created.
 
 Security logins:
+
 1)Username: Security1
 Password: secure123
 Community: SkyView
